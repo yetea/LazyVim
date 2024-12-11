@@ -16,6 +16,9 @@ return {
     },
     opts = function()
       local opts = {
+        animate = {
+          enabled = false, -- Disable animations
+        },
         bottom = {
           {
             ft = "toggleterm",
@@ -115,7 +118,7 @@ return {
         opts[pos] = opts[pos] or {}
         table.insert(opts[pos], {
           ft = "snacks_terminal",
-          size = { height = 0.4 },
+          size = { height = 0.2 },
           title = "%{b:snacks_terminal.id}: %{b:term_title}",
           filter = function(_buf, win)
             return vim.w[win].snacks_win
