@@ -1,5 +1,4 @@
 return {
-
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -59,7 +58,7 @@ return {
       })
     end,
     opts = {
-      sources = { "filesystem", "buffers", "git_status" },
+      sources = { "filesystem" },
       open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
       filesystem = {
         bind_to_cwd = false,
@@ -67,11 +66,13 @@ return {
         use_libuv_file_watcher = true,
         filtered_items = {
           visible = true, -- Show hidden files
-          hide_dotfiles = false, -- Do not hide files that start with a dot
-          hide_gitignored = false, -- Show files ignored by .gitignore
+          hide_dotfiles = false, -- Do not hide dotfiles
+          hide_gitignored = false, -- Optional: Show Git-ignored files
         },
       },
       window = {
+        width = 35,
+        title = "",
         mappings = {
           ["l"] = "open",
           ["h"] = "close_node",
@@ -96,14 +97,30 @@ return {
       default_component_configs = {
         indent = {
           with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
-          expander_collapsed = "",
-          expander_expanded = "",
+          expander_collapsed = "",
+          expander_expanded = "",
+          last_indent_marker = "╰",
           expander_highlight = "NeoTreeExpander",
+        },
+        icon = {
+          folder_closed = " ",
+          folder_open = " ",
+          folder_empty = " ",
+          folder_empty_open = " ",
         },
         git_status = {
           symbols = {
+            -- Change type
+            added = "✚", -- NOTE: you can set any of these to an empty string to not show them
+            deleted = "✖",
+            modified = "",
+            renamed = "󰁕",
+            -- Status type
+            untracked = "?",
+            ignored = "",
             unstaged = "󰄱",
-            staged = "󰱒",
+            staged = "",
+            conflict = "",
           },
         },
       },
