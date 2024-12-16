@@ -65,6 +65,11 @@ return {
         bind_to_cwd = false,
         follow_current_file = { enabled = true },
         use_libuv_file_watcher = true,
+        filtered_items = {
+          visible = true, -- Show hidden files
+          hide_dotfiles = false, -- Do not hide files that start with a dot
+          hide_gitignored = false, -- Show files ignored by .gitignore
+        },
       },
       window = {
         mappings = {
