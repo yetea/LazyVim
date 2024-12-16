@@ -34,7 +34,7 @@ return {
 
   -- codeium cmp source
   {
-    "nvim-cmp",
+    "hrsh7th/nvim-cmp",
     optional = true,
     dependencies = { "codeium.nvim" },
     opts = function(_, opts)
@@ -62,7 +62,13 @@ return {
     opts = {
       sources = {
         compat = { "codeium" },
-        providers = { codeium = { kind = "Codeium" } },
+        providers = {
+          codeium = {
+            kind = "Codeium",
+            score_offset = 100,
+            async = true,
+          },
+        },
       },
     },
   } or nil,
